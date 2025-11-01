@@ -22,4 +22,12 @@ public class InputLottoNumbersParserTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] 자연수를 입력해 주세요.");
     }
+
+    @Test
+    void 쉼표로_구분하지_않으면_예외가_발생한다() {
+        String input = "2/3/4/5/6/7";
+        assertThatThrownBy(() -> InputLottoNumbersParser.parse(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("[ERROR] 쉼표(,)로 구분해야 합니다.");
+    }
 }

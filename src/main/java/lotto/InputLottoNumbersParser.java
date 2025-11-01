@@ -9,6 +9,10 @@ public class InputLottoNumbersParser {
     }
 
     public static List<Integer> parse(String input) {
+        if (!input.contains(",")) {
+            throw new IllegalArgumentException("[ERROR] 쉼표(,)로 구분해야 합니다.");
+        }
+
         try {
             return Arrays.stream(input.split(","))
                     .map(String::trim)
