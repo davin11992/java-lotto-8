@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class InputLottoNumbersParser {
-    private InputLottoNumbersParser() {
+public class LottoNumbersParser {
+    private LottoNumbersParser() {
     }
 
     public static List<Integer> parse(String input) {

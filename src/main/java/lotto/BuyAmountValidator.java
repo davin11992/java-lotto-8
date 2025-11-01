@@ -1,7 +1,7 @@
 package lotto;
 
-public class InputBuyAmountValidator {
-    private InputBuyAmountValidator() {
+public class BuyAmountValidator {
+    private BuyAmountValidator() {
     }
 
     public static int validate(String inputBuyAmount) {
