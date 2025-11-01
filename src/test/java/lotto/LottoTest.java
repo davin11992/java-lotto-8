@@ -22,7 +22,7 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("로또_번호가_1부터_45_사이의_숫자가_아니면_예외가_발생한다")
+    @DisplayName("로또 번호가 1부터 45 사이의 숫자가 아니면 예외가 발생한다")
     @ParameterizedTest
     @ValueSource(ints = {0, 46, -1, 70})
     void 로또_번호가_1부터_45_사이의_숫자가_아니면_예외가_발생한다(int invalidNumber) {
