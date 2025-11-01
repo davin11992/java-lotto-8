@@ -5,10 +5,19 @@ import java.util.List;
 
 public class Lotto {
     private final List<Integer> numbers;
+    private final int bonusNumber;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
+        this.bonusNumber = -1;
+    }
+
+    public Lotto(List<Integer> numbers, int bonusNumber) {
+        validate(numbers);
+        validateBonusNumber(bonusNumber, numbers);
+        this.numbers = numbers;
+        this.bonusNumber = bonusNumber;
     }
 
     private void validate(List<Integer> numbers) {
@@ -25,7 +34,21 @@ public class Lotto {
         }
     }
 
+    private void validateBonusNumber(int bonusNumber, List<Integer> numbers) {
+        if (bonusNumber < 1 || bonusNumber > 45) {
+            throw new IllegalArgumentException("[ERROR] 1부터 45 사이의 숫자를 입력해주세요.");
+        }
+
+        if (numbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복되지 않아야 합니다.");
+        }
+    }
+
     public List<Integer> getNumbers() {
         return List.copyOf(numbers);
+    }
+
+    public int getBonusNumber() {
+        return bonusNumber;
     }
 }
