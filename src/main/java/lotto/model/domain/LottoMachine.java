@@ -10,8 +10,8 @@ public class LottoMachine {
     public static final int NUMBER_END = 45;
     public static final int NUMBER_COUNT = 6;
 
-    public List<Lotto> buy(int buyAmount) {
-        int number = buyAmount / PRICE;
+    public List<Lotto> purchase(int purchaseAmount) {
+        int number = purchaseAmount / PRICE;
         return IntStream.range(0, number)
                 .mapToObj(i -> new Lotto(generateRandomNumbers()))
                 .toList();

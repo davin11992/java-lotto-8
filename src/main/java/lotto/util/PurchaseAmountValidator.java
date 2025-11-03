@@ -1,29 +1,29 @@
 package lotto.util;
 
-public class BuyAmountValidator {
-    private BuyAmountValidator() {
+public class PurchaseAmountValidator {
+    private PurchaseAmountValidator() {
     }
 
-    public static int validate(String inputBuyAmount) {
-        if (inputBuyAmount.trim().isBlank()) {
+    public static int validate(String inputPurchaseAmount) {
+        if (inputPurchaseAmount.trim().isBlank()) {
             throw new IllegalArgumentException("[ERROR] 입력값이 비어 있습니다.");
         }
 
-        int buyAmount;
+        int purchaseAmount;
         try {
-            buyAmount = Integer.parseInt(inputBuyAmount);
+            purchaseAmount = Integer.parseInt(inputPurchaseAmount);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR] 자연수를 입력해 주세요.");
         }
 
-        if (buyAmount <= 0) {
+        if (purchaseAmount <= 0) {
             throw new IllegalArgumentException("[ERROR] 자연수를 입력해 주세요.");
         }
 
-        if (buyAmount % 1000 != 0) {
+        if (purchaseAmount % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 구입 금액은 1000의 배수여야 합니다.");
         }
 
-        return buyAmount;
+        return purchaseAmount;
     }
 }

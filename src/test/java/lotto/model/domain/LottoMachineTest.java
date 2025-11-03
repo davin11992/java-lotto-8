@@ -12,7 +12,7 @@ public class LottoMachineTest {
     @Test
     void 구입금액에_따라_로또_개수가_결정된다() {
         LottoMachine machine = new LottoMachine();
-        List<Lotto> lottos = machine.buy(7000);
+        List<Lotto> lottos = machine.purchase(7000);
         assertThat(lottos).hasSize(7);
     }
 
