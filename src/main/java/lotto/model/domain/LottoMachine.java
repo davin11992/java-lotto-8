@@ -10,6 +10,9 @@ public class LottoMachine {
     public static final int NUMBER_END = 45;
     public static final int NUMBER_COUNT = 6;
 
+    private LottoMachine() {
+    }
+
     public List<Lotto> purchase(int purchaseAmount) {
         int number = purchaseAmount / PRICE;
         return IntStream.range(0, number)
