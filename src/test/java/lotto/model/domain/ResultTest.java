@@ -36,6 +36,30 @@ public class ResultTest {
     }
 
     @Test
+    void 이등_두번인_경우() {
+        // given
+        Lotto winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6), 7);
+
+        List<Lotto> purchasedLottos = List.of(
+                new Lotto(List.of(1, 2, 3, 4, 5, 7)),
+                new Lotto(List.of(1, 2, 3, 4, 6, 7))
+        );
+
+        // when
+        Result result = new Result(purchasedLottos, winningLotto);
+        Map<Rank, Integer> rankCounts = result.getRankCounts();
+
+        // then
+        assertThat(rankCounts.getOrDefault(Rank.FIRST, 0)).isEqualTo(0);
+        assertThat(rankCounts.get(Rank.SECOND)).isEqualTo(2);
+        assertThat(rankCounts.getOrDefault(Rank.THIRD, 0)).isEqualTo(0);
+        assertThat(rankCounts.getOrDefault(Rank.FOURTH, 0)).isEqualTo(0);
+        assertThat(rankCounts.getOrDefault(Rank.FIFTH, 0)).isEqualTo(0);
+        assertThat(rankCounts.getOrDefault(Rank.LOSS, 0)).isEqualTo(0);
+    }
+
+
+    @Test
     void 전부_낙첨인_경우() {
         Lotto winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6), 7);
 
