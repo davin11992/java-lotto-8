@@ -1,4 +1,4 @@
-package lotto.util;
+package lotto.model.service;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
