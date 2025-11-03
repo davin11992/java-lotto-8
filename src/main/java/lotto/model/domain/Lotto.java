@@ -2,15 +2,19 @@ package lotto.model.domain;
 
 import java.util.HashSet;
 import java.util.List;
+import lotto.common.ErrorMessage;
+import lotto.common.LottoConstants;
 
 public class Lotto {
+    public static final int NO_BONUS_NUMBER = -1;
+
     private final List<Integer> numbers;
     private final int bonusNumber;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
-        this.bonusNumber = -1;
+        this.bonusNumber = NO_BONUS_NUMBER;
     }
 
     public Lotto(List<Integer> numbers, int bonusNumber) {
@@ -21,26 +25,27 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 당첨 번호는 6개의 숫자여야 합니다.");
+        if (numbers.size() != LottoConstants.NUMBER_COUNT) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_COUNT);
         }
         if (numbers.size() != new HashSet<>(numbers).size()) {
-            throw new IllegalArgumentException("[ERROR] 당첨 번호는 1부터 45 사이의 중복되지 않는 6개의 숫자여야 합니다.");
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATE_NUMBERS);
         }
         boolean invalidRange = numbers.stream()
-                .anyMatch(number -> number < 1 || number > 45);
+                .anyMatch(
+                        number -> number < LottoConstants.MIN_NUMBER || number > LottoConstants.MAX_NUMBER);
         if (invalidRange) {
-            throw new IllegalArgumentException("[ERROR] 1부터 45 사이의 숫자를 입력해주세요.");
+            throw new IllegalArgumentException(ErrorMessage.INVALID_RANGE);
         }
     }
 
     private void validateBonusNumber(int bonusNumber, List<Integer> numbers) {
-        if (bonusNumber < 1 || bonusNumber > 45) {
-            throw new IllegalArgumentException("[ERROR] 1부터 45 사이의 숫자를 입력해주세요.");
+        if (bonusNumber < LottoConstants.MIN_NUMBER || bonusNumber > LottoConstants.MAX_NUMBER) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_RANGE);
         }
 
         if (numbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복되지 않아야 합니다.");
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATE_BONUS);
         }
     }
 

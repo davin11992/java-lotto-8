@@ -6,6 +6,10 @@ import java.util.Map;
 import lotto.model.domain.Rank;
 
 public class ProfitCalculator {
+    public static final int DIVIDE_SCALE = 6;
+    public static final int PERCENTAGE_MULTIPLIER = 100;
+    public static final int DISPLAY_SCALE = 1;
+
     private ProfitCalculator() {
     }
 
@@ -24,8 +28,8 @@ public class ProfitCalculator {
         BigDecimal totalPrize = BigDecimal.valueOf(totalPrizeAmount);
         BigDecimal purchase = BigDecimal.valueOf(purchaseAmount);
 
-        return totalPrize.divide(purchase, 6, RoundingMode.HALF_UP)
-                .multiply(BigDecimal.valueOf(100))
-                .setScale(1, RoundingMode.HALF_UP);
+        return totalPrize.divide(purchase, DIVIDE_SCALE, RoundingMode.HALF_UP)
+                .multiply(BigDecimal.valueOf(PERCENTAGE_MULTIPLIER))
+                .setScale(DISPLAY_SCALE, RoundingMode.HALF_UP);
     }
 }
