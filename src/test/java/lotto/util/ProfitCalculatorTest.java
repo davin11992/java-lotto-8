@@ -45,4 +45,50 @@ public class ProfitCalculatorTest {
         // then
         assertThat(profitRate).isEqualByComparingTo("0.0");
     }
+
+    @Test
+    void calculateTotalPrize_정상작동() {
+        // given
+        Map<Rank, Integer> rankCounts = new EnumMap<>(Rank.class);
+        rankCounts.put(Rank.FIRST, 1);
+        rankCounts.put(Rank.SECOND, 2);
+        rankCounts.put(Rank.THIRD, 3);
+        rankCounts.put(Rank.FOURTH, 4);
+        rankCounts.put(Rank.FIFTH, 5);
+        rankCounts.put(Rank.LOSS, 6);
+
+        // when
+        long totalPrize = ProfitCalculator.calculateTotalPrize(rankCounts);
+
+        // then
+        long expectedResult = 2_000_000_000L + 60_000_000L + 4_500_000L + 200_000L + 25_000L;
+        assertThat(totalPrize).isEqualTo(expectedResult);
+    }
+
+    @Test
+    void calculateProfitRate_정상작동() {
+        // given
+        long totalPrizeAmount = 10_000L;
+        int purchaseAmount = 5_000;
+
+        // when
+        BigDecimal profitRate = ProfitCalculator.calculateProfitRate(totalPrizeAmount, purchaseAmount);
+
+        // then
+        assertThat(profitRate).isEqualByComparingTo("200.0");
+    }
+
+    @Test
+    void calculateProfitRate_반올림_테스트() {
+        // given
+        long totalPrizeAmount = 1000L;
+        int purchaseAmount = 3;
+
+        // when
+        BigDecimal profitRate = ProfitCalculator.calculateProfitRate(totalPrizeAmount, purchaseAmount);
+
+        // then
+        assertThat(profitRate).isEqualByComparingTo("33333.3");
+        assertThat(profitRate.scale()).isEqualTo(1);
+    }
 }
