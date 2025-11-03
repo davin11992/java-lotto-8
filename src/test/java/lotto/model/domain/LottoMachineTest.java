@@ -32,7 +32,7 @@ public class LottoMachineTest {
     void 구매금액에_따른_개수만큼_로또가_각각_랜덤번호_6개_중복없이_생성된다() {
         assertRandomUniqueNumbersInRangeTest(() -> {
             LottoMachine lottoMachine = new LottoMachine();
-            List<Lotto> lottos = lottoMachine.buy(2000);
+            List<Lotto> lottos = lottoMachine.purchase(2000);
             assertThat(lottos).hasSize(2);
             assertThat(lottos.get(0).getNumbers()).containsExactly(8, 21, 23, 41, 42, 43);
             assertThat(lottos.get(1).getNumbers()).containsExactly(3, 5, 11, 16, 32, 38);
