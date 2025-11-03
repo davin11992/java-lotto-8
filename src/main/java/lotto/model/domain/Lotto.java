@@ -44,6 +44,11 @@ public class Lotto {
         }
     }
 
+    @Override
+    public String toString() {
+        return numbers.toString();
+    }
+
     public List<Integer> getNumbers() {
         return List.copyOf(numbers);
     }
