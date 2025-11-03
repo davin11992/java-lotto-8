@@ -3,8 +3,8 @@ package lotto.view;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import lotto.util.BonusNumberValidator;
-import lotto.util.LottoNumbersParser;
 import lotto.util.PurchaseAmountValidator;
+import lotto.util.WinningNumbersParser;
 
 public class InputView {
     public static final String MESSAGE_INPUT_PURCHASE_AMOUNT = "구입금액을 입력해 주세요.";
@@ -23,7 +23,7 @@ public class InputView {
         System.out.println();
         System.out.println(MESSAGE_INPUT_WINNING_NUMBERS);
         String inputWinningNumbers = Console.readLine();
-        return LottoNumbersParser.parse(checkBlank(inputWinningNumbers));
+        return WinningNumbersParser.parse(checkBlank(inputWinningNumbers));
     }
 
     public int inputBonusNumber() {

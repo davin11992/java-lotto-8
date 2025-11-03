@@ -5,10 +5,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 import lotto.common.ErrorMessage;
 
-public class LottoNumbersParser {
+public class WinningNumbersParser {
     public static final String DELIMITER = ",";
 
-    private LottoNumbersParser() {
+    private WinningNumbersParser() {
     }
 
     public static List<Integer> parse(String winningNumbers) {

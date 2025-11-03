@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import lotto.model.domain.Lotto;
 import lotto.model.domain.LottoMachine;
+import lotto.model.domain.LottoNumbersSet;
 import lotto.model.domain.Rank;
 import lotto.model.domain.Result;
 import lotto.model.service.ProfitCalculator;
@@ -32,8 +33,10 @@ public class LottoController {
 
         int bonusNumber = readBonusNumber(winningNumbers);
 
-        Lotto winningLotto = new Lotto(winningNumbers, bonusNumber);
-        Result result = new Result(purchasedLottos, winningLotto);
+        Lotto lotto = new Lotto(winningNumbers);
+        LottoNumbersSet lottoNumbersSet = new LottoNumbersSet(lotto, bonusNumber);
+
+        Result result = new Result(purchasedLottos, lottoNumbersSet);
         Map<Rank, Integer> rankCounts = result.getRankCounts();
         outputView.printResult(rankCounts);
 
@@ -67,7 +70,7 @@ public class LottoController {
         while (true) {
             try {
                 int bonusNumber = inputView.inputBonusNumber();
-                new Lotto(winningNumbers, bonusNumber);
+                new LottoNumbersSet(new Lotto(winningNumbers), bonusNumber);
                 return bonusNumber;
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());

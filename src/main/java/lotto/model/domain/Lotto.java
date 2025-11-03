@@ -6,22 +6,11 @@ import lotto.common.ErrorMessage;
 import lotto.common.LottoConstants;
 
 public class Lotto {
-    public static final int NO_BONUS_NUMBER = -1;
-
     private final List<Integer> numbers;
-    private final int bonusNumber;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
-        this.bonusNumber = NO_BONUS_NUMBER;
-    }
-
-    public Lotto(List<Integer> numbers, int bonusNumber) {
-        validate(numbers);
-        validateBonusNumber(bonusNumber, numbers);
-        this.numbers = numbers;
-        this.bonusNumber = bonusNumber;
     }
 
     private void validate(List<Integer> numbers) {
@@ -39,16 +28,6 @@ public class Lotto {
         }
     }
 
-    private void validateBonusNumber(int bonusNumber, List<Integer> numbers) {
-        if (bonusNumber < LottoConstants.MIN_NUMBER || bonusNumber > LottoConstants.MAX_NUMBER) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_RANGE);
-        }
-
-        if (numbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException(ErrorMessage.DUPLICATE_BONUS);
-        }
-    }
-
     @Override
     public String toString() {
         return numbers.toString();
@@ -56,9 +35,5 @@ public class Lotto {
 
     public List<Integer> getNumbers() {
         return List.copyOf(numbers);
-    }
-
-    public int getBonusNumber() {
-        return bonusNumber;
     }
 }

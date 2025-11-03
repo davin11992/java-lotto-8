@@ -7,11 +7,11 @@ import java.util.Map;
 import org.junit.jupiter.api.Test;
 
 public class ResultTest {
-
     @Test
     void 모든_등수_당첨과_낙첨_테스트() {
         // given
-        Lotto winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6), 7);
+        LottoNumbersSet lottoNumbersSet = new LottoNumbersSet(
+                new Lotto(List.of(1, 2, 3, 4, 5, 6)), 7);
 
         List<Lotto> purchasedLottos = List.of(
                 new Lotto(List.of(1, 2, 3, 4, 5, 6)),
@@ -23,7 +23,7 @@ public class ResultTest {
         );
 
         // when
-        Result result = new Result(purchasedLottos, winningLotto);
+        Result result = new Result(purchasedLottos, lottoNumbersSet);
         Map<Rank, Integer> rankCounts = result.getRankCounts();
 
         // then
@@ -38,7 +38,8 @@ public class ResultTest {
     @Test
     void 이등_두번인_경우() {
         // given
-        Lotto winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6), 7);
+        LottoNumbersSet lottoNumbersSet = new LottoNumbersSet(
+                new Lotto(List.of(1, 2, 3, 4, 5, 6)), 7);
 
         List<Lotto> purchasedLottos = List.of(
                 new Lotto(List.of(1, 2, 3, 4, 5, 7)),
@@ -46,7 +47,7 @@ public class ResultTest {
         );
 
         // when
-        Result result = new Result(purchasedLottos, winningLotto);
+        Result result = new Result(purchasedLottos, lottoNumbersSet);
         Map<Rank, Integer> rankCounts = result.getRankCounts();
 
         // then
@@ -61,14 +62,15 @@ public class ResultTest {
 
     @Test
     void 전부_낙첨인_경우() {
-        Lotto winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6), 7);
+        LottoNumbersSet lottoNumbersSet = new LottoNumbersSet(
+                new Lotto(List.of(1, 2, 3, 4, 5, 6)), 7);
 
         List<Lotto> purchasedLottos = List.of(
                 new Lotto(List.of(10, 11, 12, 13, 14, 15)),
                 new Lotto(List.of(20, 21, 22, 23, 24, 25))
         );
 
-        Result result = new Result(purchasedLottos, winningLotto);
+        Result result = new Result(purchasedLottos, lottoNumbersSet);
         Map<Rank, Integer> rankCounts = result.getRankCounts();
 
         assertThat(rankCounts.getOrDefault(Rank.LOSS, 0)).isEqualTo(2);

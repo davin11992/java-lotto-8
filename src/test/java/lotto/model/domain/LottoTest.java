@@ -30,23 +30,4 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.INVALID_RANGE);
     }
-
-    @Test
-    void 보너스_번호가_당첨_번호와_중복되면_예외() {
-        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6);
-        int bonusNumber = 5;
-
-        assertThatThrownBy(() -> new Lotto(numbers, bonusNumber))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ErrorMessage.DUPLICATE_BONUS);
-    }
-
-    @ParameterizedTest
-    @ValueSource(ints = {0, 46, -1, 70})
-    void 보너스_번호가_1부터_45_사이의_숫자가_아니면_예외(int bonusNumber) {
-        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6);
-        assertThatThrownBy(() -> new Lotto(numbers, bonusNumber))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ErrorMessage.INVALID_RANGE);
-    }
 }
