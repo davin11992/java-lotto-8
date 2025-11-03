@@ -37,7 +37,7 @@ public class LottoController {
         Map<Rank, Integer> rankCounts = result.getRankCounts();
         outputView.printResult(rankCounts);
 
-        BigDecimal profit = ProfitCalculator.calculate(rankCounts, purchaseAmount);
+        BigDecimal profit = ProfitCalculator.calculateTotalProfitRate(rankCounts, purchaseAmount);
         outputView.printProfit(profit);
     }
 

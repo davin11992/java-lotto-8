@@ -40,6 +40,6 @@ public class LottoNumbersParserTest {
     void 문자_음수_영_소수_사이_공백_숫자_예외(String input) {
         assertThatThrownBy(() -> LottoNumbersParser.parse(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(ErrorMessage.INVALID_DELIMITER_OR_LESS_THAN_6_NUMBERS);
+                .hasMessage(ErrorMessage.INVALID_DELIMITER_OR_LESS_THAN_6_NUMBERS);
     }
 }

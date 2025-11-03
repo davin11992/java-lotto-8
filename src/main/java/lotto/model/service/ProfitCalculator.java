@@ -13,12 +13,12 @@ public class ProfitCalculator {
     private ProfitCalculator() {
     }
 
-    public static BigDecimal calculate(Map<Rank, Integer> rankCounts, int purchaseAmount) {
-        long totalPrizeAmount = calculateTotalPrize(rankCounts);
+    public static BigDecimal calculateTotalProfitRate(Map<Rank, Integer> rankCounts, int purchaseAmount) {
+        long totalPrizeAmount = sumTotalPrize(rankCounts);
         return calculateProfitRate(totalPrizeAmount, purchaseAmount);
     }
 
-    public static long calculateTotalPrize(Map<Rank, Integer> rankCounts) {
+    public static long sumTotalPrize(Map<Rank, Integer> rankCounts) {
         return rankCounts.entrySet().stream()
                 .mapToLong(entry -> (long) entry.getKey().getReward() * entry.getValue())
                 .sum();

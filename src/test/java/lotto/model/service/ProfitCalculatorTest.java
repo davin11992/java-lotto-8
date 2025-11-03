@@ -23,7 +23,7 @@ public class ProfitCalculatorTest {
         int purchaseAmount = 6_000;
 
         // when
-        BigDecimal profitRate = ProfitCalculator.calculate(rankCounts, purchaseAmount);
+        BigDecimal profitRate = ProfitCalculator.calculateTotalProfitRate(rankCounts, purchaseAmount);
 
         // then
         // (2,000,000,000 + 30,000,000 + 1,500,000 + 50,000 + 5,000) / 6,000 * 100
@@ -39,14 +39,14 @@ public class ProfitCalculatorTest {
         int purchaseAmount = 3_000;
 
         // when
-        BigDecimal profitRate = ProfitCalculator.calculate(rankCounts, purchaseAmount);
+        BigDecimal profitRate = ProfitCalculator.calculateTotalProfitRate(rankCounts, purchaseAmount);
 
         // then
         assertThat(profitRate).isEqualByComparingTo("0.0");
     }
 
     @Test
-    void calculateTotalPrize_정상작동() {
+    void sumTotalPrize_정상작동() {
         // given
         Map<Rank, Integer> rankCounts = new EnumMap<>(Rank.class);
         rankCounts.put(Rank.FIRST, 1);
@@ -57,7 +57,7 @@ public class ProfitCalculatorTest {
         rankCounts.put(Rank.LOSS, 6);
 
         // when
-        long totalPrize = ProfitCalculator.calculateTotalPrize(rankCounts);
+        long totalPrize = ProfitCalculator.sumTotalPrize(rankCounts);
 
         // then
         long expectedResult = 2_000_000_000L + 60_000_000L + 4_500_000L + 200_000L + 25_000L;
@@ -65,7 +65,7 @@ public class ProfitCalculatorTest {
     }
 
     @Test
-    void calculateProfitRate_정상작동() {
+    void calculateTotalProfitRateProfitRate_정상작동() {
         // given
         long totalPrizeAmount = 10_000L;
         int purchaseAmount = 5_000;
@@ -78,7 +78,7 @@ public class ProfitCalculatorTest {
     }
 
     @Test
-    void calculateProfitRate_반올림_테스트() {
+    void calculateTotalProfitRateProfitRate_반올림_테스트() {
         // given
         long totalPrizeAmount = 1000L;
         int purchaseAmount = 3;
