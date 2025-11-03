@@ -8,14 +8,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 public class PurchaseAmountValidatorTest {
     @ParameterizedTest
-    @ValueSource(strings = {"", " "})
-    void 공백이면_예외가_발생한다(String inputBuyAmount) {
-        assertThatThrownBy(() -> PurchaseAmountValidator.validate(inputBuyAmount))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 입력값이 비어 있습니다.");
-    }
-
-    @ParameterizedTest
     @ValueSource(strings = {"abc", "-1000", "0", "3.1"})
     void 자연수가_아니면_예외가_발생한다(String inputBuyAmount) {
         assertThatThrownBy(() -> PurchaseAmountValidator.validate(inputBuyAmount))

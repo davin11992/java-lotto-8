@@ -5,10 +5,6 @@ public class PurchaseAmountValidator {
     }
 
     public static int validate(String inputPurchaseAmount) {
-        if (inputPurchaseAmount.trim().isBlank()) {
-            throw new IllegalArgumentException("[ERROR] 입력값이 비어 있습니다.");
-        }
-
         int purchaseAmount;
         try {
             purchaseAmount = Integer.parseInt(inputPurchaseAmount);
