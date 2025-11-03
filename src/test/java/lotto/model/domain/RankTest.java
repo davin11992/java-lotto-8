@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
 
 class RankTest {
-
     @Test
     void 일등_테스트() {
         assertThat(Rank.of(6, false)).isEqualTo(Rank.FIRST);

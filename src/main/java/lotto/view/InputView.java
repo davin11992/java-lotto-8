@@ -7,11 +7,10 @@ import lotto.util.LottoNumbersParser;
 import lotto.util.PurchaseAmountValidator;
 
 public class InputView {
-
     public static final String MESSAGE_INPUT_PURCHASE_AMOUNT = "구입금액을 입력해 주세요.";
     public static final String MESSAGE_INPUT_WINNING_NUMBERS = "당첨 번호를 입력해 주세요.";
     public static final String MESSAGE_INPUT_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
-    
+
     public static final String ERROR_EMPTY_INPUT = "[ERROR] 입력값이 비어 있습니다.";
 
     public int inputPurchaseAmount() {

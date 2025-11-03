@@ -4,12 +4,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
+import lotto.common.ErrorMessage;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class LottoNumbersParserTest {
-
     @Test
     void 쉼표로_구분된_숫자문자열을_리스트로_변환() {
         String input = "1,2,3,4,5,6";
@@ -24,7 +24,7 @@ public class LottoNumbersParserTest {
     void 자연수가_아닌_값이_포함되어_있으면_예외(String input) {
         assertThatThrownBy(() -> LottoNumbersParser.parse(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 자연수를 입력해 주세요.");
+                .hasMessage(ErrorMessage.NOT_A_NATURAL_NUMBER);
     }
 
     @Test
@@ -32,7 +32,7 @@ public class LottoNumbersParserTest {
         String input = "2/3/4/5/6/7";
         assertThatThrownBy(() -> LottoNumbersParser.parse(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 쉼표(,)로 6개의 숫자를 구분해야 합니다.");
+                .hasMessage(ErrorMessage.INVALID_DELIMITER_OR_LESS_THAN_6_NUMBERS);
     }
 
     @ParameterizedTest
@@ -40,6 +40,6 @@ public class LottoNumbersParserTest {
     void 문자_음수_영_소수_사이_공백_숫자_예외(String input) {
         assertThatThrownBy(() -> LottoNumbersParser.parse(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("[ERROR] 쉼표(,)로 6개의 숫자를 구분해야 합니다.");
+                .hasMessageContaining(ErrorMessage.INVALID_DELIMITER_OR_LESS_THAN_6_NUMBERS);
     }
 }

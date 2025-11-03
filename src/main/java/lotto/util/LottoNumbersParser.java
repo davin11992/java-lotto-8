@@ -7,14 +7,13 @@ import lotto.common.ErrorMessage;
 
 public class LottoNumbersParser {
     public static final String DELIMITER = ",";
-    public static final String ERROR_INVALID_DELIMITER_OR_LESS_THAN_6_NUMBERS = "[ERROR] 쉼표(,)로 6개의 숫자를 구분해야 합니다.";
 
     private LottoNumbersParser() {
     }
 
     public static List<Integer> parse(String input) {
         if (!input.contains(DELIMITER)) {
-            throw new IllegalArgumentException(ERROR_INVALID_DELIMITER_OR_LESS_THAN_6_NUMBERS);
+            throw new IllegalArgumentException(ErrorMessage.INVALID_DELIMITER_OR_LESS_THAN_6_NUMBERS);
         }
 
         try {

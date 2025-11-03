@@ -9,7 +9,6 @@ import lotto.model.domain.Rank;
 import org.junit.jupiter.api.Test;
 
 public class ProfitCalculatorTest {
-
     @Test
     void 모든_등수_당첨과_낙첨_수익률() {
         // given

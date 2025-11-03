@@ -7,13 +7,12 @@ import lotto.model.domain.Lotto;
 import lotto.model.domain.Rank;
 
 public class OutputView {
-
     public static final String MESSAGE_PURCHASE_COUNT_SUFFIX = "개를 구매했습니다.";
     public static final String MESSAGE_RESULT_TITLE = "당첨 통계";
     public static final String MESSAGE_RESULT_SEPARATOR = "---";
     public static final String MESSAGE_PROFIT_PREFIX = "총 수익률은 ";
     public static final String MESSAGE_PROFIT_SUFFIX = "%입니다.";
-    
+
     public static final String FORMAT_SEPARATOR = " - ";
     public static final String UNIT_COUNT = "개";
 

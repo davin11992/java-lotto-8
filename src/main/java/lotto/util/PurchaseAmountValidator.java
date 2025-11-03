@@ -4,9 +4,6 @@ import lotto.common.ErrorMessage;
 import lotto.common.LottoConstants;
 
 public class PurchaseAmountValidator {
-
-    public static final String ERROR_INVALID_PURCHASE_UNIT = "[ERROR] 구입 금액은 1000의 배수여야 합니다.";
-
     private PurchaseAmountValidator() {
     }
 
@@ -23,7 +20,7 @@ public class PurchaseAmountValidator {
         }
 
         if (purchaseAmount % LottoConstants.ONE_PRICE != 0) {
-            throw new IllegalArgumentException(ERROR_INVALID_PURCHASE_UNIT);
+            throw new IllegalArgumentException(ErrorMessage.INVALID_PURCHASE_UNIT);
         }
 
         return purchaseAmount;

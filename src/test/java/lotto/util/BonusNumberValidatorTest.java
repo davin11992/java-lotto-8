@@ -3,6 +3,7 @@ package lotto.util;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import lotto.common.ErrorMessage;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -19,6 +20,6 @@ public class BonusNumberValidatorTest {
     void 문자_음수_영_소수_2개_이상_숫자_예외(String input) {
         assertThatThrownBy(() -> BonusNumberValidator.validate(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("[ERROR] 1개의 자연수를 입력해 주세요.");
+                .hasMessageContaining(ErrorMessage.INVALID_BONUS_NUMBER);
     }
 }
