@@ -14,12 +14,14 @@ public class InputView {
     }
 
     public List<Integer> inputWinningNumbers() {
+        System.out.println();
         System.out.println("당첨 번호를 입력해 주세요.");
         String inputWinningNumbers = Console.readLine();
         return LottoNumbersParser.parse(checkBlank(inputWinningNumbers));
     }
 
     public int inputBonusNumber() {
+        System.out.println();
         System.out.println("보너스 번호를 입력해 주세요.");
         String inputBonusNumber = Console.readLine();
         return BonusNumberValidator.validate(checkBlank(inputBonusNumber));

@@ -8,13 +8,15 @@ import lotto.model.domain.Rank;
 
 public class OutputView {
     public void printPurchasedLottos(List<Lotto> purchaseLottos) {
+        System.out.println();
         System.out.println(purchaseLottos.size() + "개를 구매했습니다.");
         for (Lotto lotto : purchaseLottos) {
             System.out.println(lotto);
         }
     }
 
-    public void printStatistics(Map<Rank, Integer> rankCounts) {
+    public void printResult(Map<Rank, Integer> rankCounts) {
+        System.out.println();
         System.out.println("당첨 통계");
         System.out.println("---");
 
@@ -28,6 +30,6 @@ public class OutputView {
     }
 
     public void printProfit(BigDecimal profit) {
-        System.out.println("총 수익률은" + profit + " 입니다.");
+        System.out.println("총 수익률은 " + profit + "% 입니다.");
     }
 }
