@@ -1,10 +1,11 @@
-package lotto.model.domain;
+package lotto.util;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.math.BigDecimal;
 import java.util.EnumMap;
 import java.util.Map;
+import lotto.model.domain.Rank;
 import org.junit.jupiter.api.Test;
 
 public class ProfitCalculatorTest {
