@@ -8,21 +8,29 @@ public class PurchaseAmountValidator {
     }
 
     public static int validate(String inputPurchaseAmount) {
-        int purchaseAmount;
+        int purchaseAmount = parseToInt(inputPurchaseAmount);
+        validateNaturalNumber(purchaseAmount);
+        validateUnit(purchaseAmount);
+        return purchaseAmount;
+    }
+
+    private static int parseToInt(String input) {
         try {
-            purchaseAmount = Integer.parseInt(inputPurchaseAmount);
+            return Integer.parseInt(input);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ErrorMessage.NOT_A_NATURAL_NUMBER);
         }
+    }
 
-        if (purchaseAmount <= 0) {
+    private static void validateNaturalNumber(int amount) {
+        if (amount <= 0) {
             throw new IllegalArgumentException(ErrorMessage.NOT_A_NATURAL_NUMBER);
         }
+    }
 
-        if (purchaseAmount % LottoConstants.ONE_PRICE != 0) {
+    private static void validateUnit(int amount) {
+        if (amount % LottoConstants.ONE_PRICE != 0) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_PURCHASE_UNIT);
         }
-
-        return purchaseAmount;
     }
 }
