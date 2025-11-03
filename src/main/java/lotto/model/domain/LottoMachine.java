@@ -10,9 +10,6 @@ public class LottoMachine {
     public static final int NUMBER_END = 45;
     public static final int NUMBER_COUNT = 6;
 
-    private LottoMachine() {
-    }
-
     public List<Lotto> purchase(int purchaseAmount) {
         int number = purchaseAmount / PRICE;
         return IntStream.range(0, number)
@@ -21,6 +18,9 @@ public class LottoMachine {
     }
 
     public static List<Integer> generateRandomNumbers() {
-        return Randoms.pickUniqueNumbersInRange(NUMBER_START, NUMBER_END, NUMBER_COUNT);
+        return Randoms.pickUniqueNumbersInRange(NUMBER_START, NUMBER_END, NUMBER_COUNT)
+                .stream()
+                .sorted()
+                .toList();
     }
 }
