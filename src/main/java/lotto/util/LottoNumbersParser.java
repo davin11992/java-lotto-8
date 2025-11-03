@@ -10,7 +10,7 @@ public class LottoNumbersParser {
 
     public static List<Integer> parse(String input) {
         if (!input.contains(",")) {
-            throw new IllegalArgumentException("[ERROR] 쉼표(,)로 구분해야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 쉼표(,)로 6개의 숫자를 구분해야 합니다.");
         }
 
         try {
